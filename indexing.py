@@ -6,8 +6,6 @@ from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 nltk.download('wordnet')
 
-
-
 docs = {
 	1: 'new home sales top forecasts new',
 	2: 'home sales rise in july',
@@ -25,14 +23,6 @@ def normalizer(arr):
 		new_arr.append(lemmatizer.lemmatize(word))
 
 	return new_arr
-
-# def classifier(arr, docID):
-# 	bag = []
-# 	for term in arr:
-# 		bag.append((term, docID))
-
-# 	print(bag)
-# 	return bag
 
 def indexer(dic):
 	index = defaultdict(list)
