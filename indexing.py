@@ -1,6 +1,8 @@
 from collections import defaultdict
 import preprocessors
 from preprocessors import normalizer,tokenizer
+import queers
+from queers import and_query, or_query
 
 docs = {
 	1: 'new home sales top forecasts new',
@@ -31,4 +33,4 @@ def indexer(dic):
 
 index = indexer(docs)
 
-print(index['july'])
+print(and_query('schizophrenia drug', index))
