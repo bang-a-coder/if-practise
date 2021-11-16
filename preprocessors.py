@@ -10,6 +10,6 @@ def normalizer(arr):
 	lemmatizer=WordNetLemmatizer()
 	new_arr = []
 	for word in arr:
-		new_arr.append(lemmatizer.lemmatize(word))
+		new_arr.append(lemmatizer.lemmatize(word.lower()))
 
 	return new_arr

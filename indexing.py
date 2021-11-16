@@ -11,7 +11,9 @@ docs = {
 	4: 'july new home sales rise',
 	5: 'breakthrough drug for schizophrenia',
 	6: 'new schizophrenia drug',
-	7: 'new approach for treatment of schizophrenia new hopes for schizophrenia patients'
+	7: 'new approach for treatment of schizophrenia new hopes for schizophrenia patients',
+	8: 'The inventor Stanford Ovshinsky never went to university',
+	9: 'Jonathan went to Stanford University last year'
 }
 
 
@@ -33,4 +35,4 @@ def indexer(dic):
 
 index = indexer(docs)
 
-print(or_query('schizophrenia drug', index))
+print(and_query('Stanford University', index))
