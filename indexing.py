@@ -33,4 +33,4 @@ def indexer(dic):
 
 index = indexer(docs)
 
-print(and_query('schizophrenia drug', index))
+print(or_query('schizophrenia drug', index))
