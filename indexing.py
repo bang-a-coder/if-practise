@@ -1,3 +1,4 @@
+from collections import defaultdict
 from typing import DefaultDict
 import pandas
 import nltk
@@ -7,10 +8,12 @@ nltk.download('wordnet')
 
 
 
-doc1 = 'new home sales top forecasts new'
-doc2 = 'home sales rise in july'
-doc3 = 'increase in home sales in july'
-doc4 = 'july new home sales rise'
+docs = {
+	1: 'new home sales top forecasts new',
+	2: 'home sales rise in july',
+	3: 'increase in home sales in july',
+	4: 'july new home sales rise'	
+}
 
 def tokenizer(text):
 	return text.split()
@@ -23,36 +26,29 @@ def normalizer(arr):
 
 	return new_arr
 
-def classifier(arr, docID):
-	bag = []
-	for term in arr:
-		bag.append((term, docID))
+# def classifier(arr, docID):
+# 	bag = []
+# 	for term in arr:
+# 		bag.append((term, docID))
 
-	return bag
-	
-def indexer(arr):
-	term_ID_list = []
+# 	print(bag)
+# 	return bag
 
-	for i, doc in enumerate(arr):
-		doc_term_list = classifier(normalizer(tokenizer(doc)), i+1)
-		for term in doc_term_list:
-			term_ID_list.append(term)
+def indexer(dic):
+	index = defaultdict(list)
 
-	dic = {}
-	
-	for term, docID in term_ID_list:
-		if term in dic: 
-			print(term, 'exists already', dic[term])
-			dic[term].append(docID)
-		else:
-			dic[term] = [docID]
+	for id in sorted(dic.keys()):
+		term_set = set(normalizer(tokenizer(dic[id]))) #set to avoid duplicates
+		print(term_set)
+		for term in term_set:
+			index[term].append(id)
 
-	return dic
+	return index
 
 
 
 
-doc_arr = [doc1, doc2, doc3, doc4]
-index = indexer(doc_arr)
 
-print(index['new'])
+index = indexer(docs)
+
+print(index['july'])
