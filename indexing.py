@@ -4,7 +4,7 @@ from preprocessors import normalizer,tokenizer
 import queers
 from queers import and_query, or_query
 from indexers.biworder import biworder
-from indexers.pos_indexer import pos_indexer
+from pos_indexer import pos_indexer
 
 docs = {
 	1: 'new home sales top forecasts new',
