@@ -3,6 +3,7 @@ import preprocessors
 from preprocessors import normalizer,tokenizer
 import queers
 from queers import and_query, or_query
+from biworder import biworder
 
 docs = {
 	1: 'new home sales top forecasts new',
@@ -18,12 +19,16 @@ docs = {
 
 
 
-def indexer(dic):
+def indexer(dic, method = 'def'):
 	index = defaultdict(list)
 
 	for id in sorted(dic.keys()):
-		term_set = set(normalizer(tokenizer(dic[id]))) #set to avoid duplicates
-		print(term_set)
+		if method == 'bi':
+			term_set = set(biworder(dic[id]))
+		else:
+			term_set = set(normalizer(tokenizer(dic[id]))) #set to avoid duplicates
+
+		# print(term_set)
 		for term in term_set:
 			index[term].append(id)
 
@@ -35,4 +40,5 @@ def indexer(dic):
 
 index = indexer(docs)
 
+# print(index['stanford university'])
 print(and_query('Stanford University', index))
