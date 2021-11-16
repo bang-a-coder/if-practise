@@ -1,28 +1,18 @@
 from collections import defaultdict
-from typing import DefaultDict
-import pandas
-import nltk
-from nltk.stem import WordNetLemmatizer
-from nltk.tokenize import word_tokenize
-nltk.download('wordnet')
+import preprocessors
+from preprocessors import normalizer,tokenizer
 
 docs = {
 	1: 'new home sales top forecasts new',
 	2: 'home sales rise in july',
 	3: 'increase in home sales in july',
-	4: 'july new home sales rise'	
+	4: 'july new home sales rise',
+	5: 'breakthrough drug for schizophrenia',
+	6: 'new schizophrenia drug',
+	7: 'new approach for treatment of schizophrenia new hopes for schizophrenia patients'
 }
 
-def tokenizer(text):
-	return text.split()
 
-def normalizer(arr):
-	lemmatizer=WordNetLemmatizer()
-	new_arr = []
-	for word in arr:
-		new_arr.append(lemmatizer.lemmatize(word))
-
-	return new_arr
 
 def indexer(dic):
 	index = defaultdict(list)
